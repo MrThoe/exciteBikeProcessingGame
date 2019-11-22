@@ -6,6 +6,7 @@ public class Bike{
   private PImage costume;
   private int topSpeed;
   private boolean isAccelerating;
+  private boolean warning;
   private float x;
   private float y;
   public float accel;
@@ -23,6 +24,8 @@ public class Bike{
   }
     
   public void display(){
+    displayWarning();
+    checkMud();
     if(lane < 1){
       lane = 1;
     } else if (lane > 4){
@@ -34,6 +37,7 @@ public class Bike{
     } 
     if(accel >= 10){
       accel = 10;
+      warning = false;
     } else if(accel >= 6){
       costume = bu;
     } else if (accel > 0){
@@ -47,5 +51,22 @@ public class Bike{
     }
     image(costume, x, y);
   }
-    
+  
+  public void checkMud(){
+    for(int i = 0; i < mud.length; i++){
+      if(x > bgx + mud[i].x && x < bgx + mud[i].x + 100 && y > mud[i].y-40 && y < mud[i].y +10){
+        accel = 2;
+        isAccelerating = true; //RESET THE ACCELERATOR ANIMATION
+        warning = true;  
+      }  
+    }
+  }
+  
+  public void displayWarning(){
+    if(warning){
+        fill(255);
+        text("SHAKE OFF THE MUD!", width/2, 250);
+        text("TAP THE LEFT ARROW", width/2, 300); 
+    }
+  }
 }
