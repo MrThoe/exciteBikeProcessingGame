@@ -1,6 +1,7 @@
 PImage bg;
 Bike bike;
 Time time;
+Mud[] mud;
 float bgx, bgy;
 int count, t;
 
@@ -9,12 +10,18 @@ void setup(){
   bike = new Bike();
   bg = loadImage("./img/excitebike.png"); 
   time = new Time();
+  mud = new Mud[2];
+  for(int i = 0; i < mud.length; i++){
+    mud[i] = new Mud(2*i);
+  }
 }
 
 void draw(){
   moveBg();
   image(bg, bgx, bgy);   
   image(bg, bgx + bg.width, bgy);
+  displayMud();
+  bike.checkMud();
   bike.display();
   if(!keyPressed){
       if(bike.accel >=1 && count%4 == 0){
@@ -27,6 +34,11 @@ void draw(){
   time.update();
 }
 
+public void displayMud(){
+  for (int i = 0; i < mud.length ; i++){
+    mud[i].display();
+  }
+}
 void moveBg(){
  bgx -= bike.accel;
  if(bgx < -bg.width){
