@@ -1,4 +1,4 @@
-# exciteBikeProcessingGame
+# Excite Bike Processing Game
 Rebuilding NES one game at a time...
 Currently just beginning this challenge, but with the help of some friends (@Kenon Willis) we will get this made!
 
