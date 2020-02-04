@@ -11,7 +11,7 @@ public class Time{
   public void display(){
     fill(10,10,10,100);
     rect(18, 12, 200, 40);
-    textSize(32);
+    textSize(33);
     fill(255);
     text("Time: " + timer, 20, 45);  //TOP LEFT CORNER   
   }
