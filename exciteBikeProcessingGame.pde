@@ -76,7 +76,7 @@ void moveBg(){
    
  }
 }
-void keyPressed(){
+void keyPressed(){                          //THIS ONL WQORKS WITH ARROW KEYS
   if(key == CODED){
     if (keyCode == UP){
       bike.lane--;
